@@ -1,5 +1,5 @@
 telethon
-pyyaml
 discord.py
 python-dotenv
 asyncio
+flask
