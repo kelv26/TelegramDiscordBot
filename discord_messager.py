@@ -8,8 +8,8 @@ import discord
     DISCORD CLIENT - Init the client
 ------------------------------------------------------------------------
 '''
-
-discord_client = discord.Client()
+intents = discord.Intents.default()
+discord_client = discord.Client(intents=intents)
 with open('config.yml', 'rb') as f:
     config = yaml.safe_load(f)
 
@@ -38,18 +38,9 @@ async def on_ready():
 
     # My channels are for RTX card drops and PS5
     channel_1 = discord_client.get_channel(config["discord_1_channel"])
-    channel_2 = discord_client.get_channel(config["discord_2_channel"])
-    channel_3 = discord_client.get_channel(config["discord_3_channel"])
-    channel_4 = discord_client.get_channel(config["discord_4_channel"])
 
-    if 'Mario' in message:
+    if message:
         await channel_1.send(message)
-    elif 'Zelda' in message:
-        await channel_2.send(message)
-    elif 'Minecraft' in message:
-        await channel_3.send(message)
-    elif 'Valhiem' in message:
-        await channel_4.send(message)
 
     quit()
 
